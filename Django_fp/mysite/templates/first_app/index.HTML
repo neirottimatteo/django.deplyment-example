@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends "first_app/base.html" %}
+{% load static %}
+{%block body_block %}
+
+
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first App django</title>
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+</head>
+<body>
+
+    
+    
+    
+    <a href="{% url 'first_app:forms' %}">form</a>
+    <a href="{% url 'first_app:relative' %}">relative</a>
+    <h1>DJ level 2</h1>
+    <h2>Here are yours acces records:</h2>
+
+    <div class="djangotwo">
+        {% if acces_records %}
+        <table>
+            <thead>
+                <th>Site name</th>
+                <th>Date Accesed</th>
+            </thead>
+
+            {% for acc in acces_records %}
+            <tr>
+                <td>{{acc.name | upper}}</td>
+                <td>{{acc.date}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+            <p>No acces reord found</p>
+        {% endif %}
+        
+
+
+    </div>
+
+
+
+
+    <h1>Hello this is index.html!</h1>
+
+    {{ insert_me }}
+    <h1>Hi this is a picture</h1>
+    <img src="{% static 'images/firstimage.jpg' %}" alt="oh, didn't show">
+
+    
+</body>
+</html>
+{% endblock %}
